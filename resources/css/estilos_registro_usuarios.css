@@ -1,0 +1,131 @@
+
+a:link{ text-decoration:none; }
+.alerta{ color: red;}    
+.titulos{ color:#3E5F8A ; }
+.titulos1{ color:#3E5F8A; margin-left: 15%;}
+.titulos2{ color: orange; text-align: left;}
+.leyendas{   margin-left: 12%;}
+.correcto{ background-color: #BDECB6; color: #317F43; width: 80%; font-weight: bold; margin-left: 12%;}
+.leyendaprincipal{ color: gray; width: 80%; font-weight: bold; margin-left: 12%; 
+border-bottom: 5px solid #a1250a; }
+.opciones{ color:red; margin-left: 12%;}
+.eyeB{
+    background-image: url("../img/eyeblock.png");
+    width:28px;  
+    height:25px;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    cursor: pointer;
+}
+.eyeV{
+    background-image: url("../img/eyeview.png");
+    width:35px;  
+    height:25px; 
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    cursor: pointer;
+}
+.form{
+    margin-left: 29%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 3px;
+    width: 65%;
+}
+
+.formulario2{
+    margin-left: 0%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 3px;
+    width: 100%;
+}
+
+input[type="text"],
+input[type="password"]{
+    border-bottom-color: #3E5F8A;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+}
+
+.button2{
+    border: none;
+    width: 100px;
+    color: white;
+    background: gray;
+    padding: 10px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 55%;
+    cursor: pointer;
+}
+
+.button2:hover{
+  background:  #5D9B9B
+}
+
+.buttons{
+    border: none;
+    width: 100px;
+    color: white;
+    background: gray;
+    padding: 10px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 15%;
+    cursor: pointer;
+}
+
+.buttons:hover{
+    background: #5D9B9B;
+}
+
+/*tooltip*/
+.tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: #d1d1d1;
+    text-align: center;
+    border-radius: 3px;
+    padding: 2px 0;
+    position: absolute;
+    z-index: 1;
+    top: -10px;
+    left: 110%;
+    color: black;
+    font-size: 10px;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 39%;
+    right: 100%;
+    margin-top: -2px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: transparent #d1d1d1 transparent transparent;
+  }
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+  /*fin tooltip*/
+
+
+
+
+@media screen and (max-width: 586px) {
+    input[type=text] ,input[type="password"], label, .buttons, .button2, span, .recuperacion, .titulos1, .form, .tooltip .tooltiptext::after{
+     width: 70%;
+     margin-left: 15%;
+     margin-top: 5px;
+   }
+ }

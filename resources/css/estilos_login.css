@@ -1,0 +1,51 @@
+        a:link{ text-decoration:none; }
+        .alerta{color: red;}
+        .carga{ margin-left: 20%;}
+        .cargaMensaje{ margin-left: 10px; }
+        .negrita{color: black;}
+        .titulos{ color:rgb(12, 32, 212); }
+        .titulos1{ color:rgb(12, 32, 212); margin-left: 10%;}
+        .recuperacion{ color:rgb(12, 32, 212); margin-left: 5%;}
+        .contenedor{
+            margin-top: 5%;
+            padding: 3px;
+            width: 100%;
+        }
+        .formulario{
+            margin-left: 39%;
+            margin-top: 5%;
+            padding: 3px;
+            width: 50%;
+        }
+       
+        input[type="text"],
+        input[type="password"]{
+            padding: 10px;
+            border-bottom-color:rgb(12, 32, 212);
+            border-right: none;
+            border-left: none;
+            border-top: none;
+        }
+        
+        .button1{
+            border: none;
+            width: 100px;
+            color: white;
+            background: gray;
+            padding: 10px 5px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-left: 15%;
+        }
+        
+        .button1:hover{
+            background:  #5D9B9B;
+        }
+
+@media screen and (max-width: 586px) {
+             input[type=text] ,input[type="password"], .formulario, label, .button1, span, .recuperacion{
+              width: 70%;
+              margin-left: 15%;
+              margin-top: 0;
+            }
+          }

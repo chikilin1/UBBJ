@@ -1,0 +1,109 @@
+.titulos{ color:#3E5F8A }
+.city {display:none;}
+input[type="text"],
+input[type="password"]{
+    width: 35%;
+    padding: 10px;
+    border-bottom-color: #3E5F8A;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+}
+
+input[type="number"]{
+    width: 12%;
+    padding: 10px;
+    border-bottom-color: #3E5F8A;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+}
+
+.button{
+    border: none;
+    width: 100px;
+    color: white;
+    background: gray;
+    padding: 10px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 60%;
+}
+
+.button:hover{
+    background:  #5D9B9B
+}
+.button2{
+    border: none;
+    width: 100px;
+    color: white;
+    background: gray;
+    padding: 10px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 0%;
+}
+.button2:hover{
+    background:  #5D9B9B
+}
+
+.formulario3{
+    
+    margin-left: 30%;
+    margin-top: 5%;
+    padding: 3px;
+    width: 70%;
+}
+
+.buttonVer{
+    border: none;
+    /*width: 100px;*/
+    color: white;
+    background: gray;
+    padding: 6px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 0%;
+}
+
+.buttonVer:hover{
+    background:  #5D9B9B
+}
+
+/*tooltip*/
+.tooltip2 {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip2 .tooltiptext2 {
+    visibility: hidden;
+    width: 300px;
+    background-color: #d1d1d1;
+    text-align: center;
+    border-radius: 3px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    top: -10px;
+    left: 110%;
+    color: black;
+    font-size: 10px;
+    text-align: justify;
+
+  }
+  
+  .tooltip2 .tooltiptext2::after {
+    content: "";
+    position: absolute;
+    top: 59%;
+    right: 100%;
+    margin-top: -2px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: transparent #d1d1d1 transparent transparent;
+    text-align: justify;
+  }
+  .tooltip2:hover .tooltiptext2 {
+    visibility: visible;
+  }

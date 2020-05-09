@@ -1,0 +1,51 @@
+/*a:link{ text-decoration:none; }
+.titulos{ color:rgb(12, 32, 212); }
+.titulos1{ color:rgb(12, 32, 212); margin-left: 10%;}
+.recuperacion{ color:rgb(12, 32, 212); margin-left: 5%;}
+.texto{font-size: 20px;}
+.icono{font-size: 20px;}
+.contenedor2{
+    margin-top: 5%;
+    padding: 3px;
+    width: 80%;
+}
+.formularioC{
+    margin-left: 24%;
+    margin-top: 5%;
+    padding: 3px;
+    width: 100%;
+}
+
+#container {
+    position: relative;
+    width:80%;
+    text-align:center;
+    border-color: 1px solid pink;
+    color: wheat;
+    margin-right: 20%;
+}
+
+#left {
+    float:left;
+    width:200px;
+    height: 200px;
+    background-color: #E55137;
+    border-radius: 8%;
+}
+
+#center {
+    display: inline-block;
+    margin:0 auto;
+    width:200px;
+    height: 200px;
+    background-color: #E63244;
+    border-radius: 8%;
+}
+
+#right {
+    float:right;
+    width:200px;
+    height: 200px;
+    background-color: #E55137;
+    border-radius: 8%;
+}*/

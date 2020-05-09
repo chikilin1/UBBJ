@@ -1,0 +1,329 @@
+div[id^='caja_registro_aspirantes']{
+	position: relative;
+	width: 100%;
+	max-width: 320px;
+	display: inline-block;
+	margin: 5px auto;
+	text-align: left;
+	padding: 0 5px;
+	vertical-align: middle;
+	}
+div[id^='caja_registro_aspirantes'] div[id^='input_registro_aspirantes_combo']{
+	padding: 0px 54px 0px 0px;
+	height: 50px;
+	}
+div[id^='caja_registro_aspirantes'] label[id^='label_input_registro_aspirantes']{
+	display: block;
+	text-align: left;
+	font-size: 12px;
+	line-height: normal;
+	}
+
+/*div[id^='caja_registro_aspirantes'] label.check_label{
+	display: inline-block;
+	width: 100%;
+	padding-left: 10px;
+	text-align: left;
+	font-size: 16px;
+	line-height: normal;
+	vertical-align: middle;
+	}
+
+div[id^='caja_registro_aspirantes'] label.check_label span{
+	vertical-align: middle;
+	}*/
+
+input.registro_aspirantes:not([type=checkbox]):not([type=radio]){
+	color:#3c3c3c;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight:500;
+	font-size: 18px;
+	text-align: left;
+	border-radius: 0;
+	line-height: 22px;
+	background-color: #fbfbfb;
+	padding: 13px 54px 13px 13px;
+	width:100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	border: solid 1px #dcdcdc;
+	transition: box-shadow 0.3s, border 0.3s;
+	}
+input.registro_aspirantes:not([type=checkbox]):not([type=radio]):hover{
+	border: solid 1px #bfbfbf;
+	}
+input.registro_aspirantes:not([type=checkbox]):not([type=radio]):focus{
+	background: #fff;
+	box-shadow: 0 0 5px 1px #969696;
+	border: solid 1px #707070;
+	color: #3498db;
+	outline: none;
+	padding: 13px 54px 13px 13px;
+	}
+
+select.registro_aspirantes{
+	color:#3c3c3c;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight:500;
+	font-size: 16px;
+	text-align: left;
+	border-radius: 0;
+	line-height: 22px;
+	background-color: #fbfbfb;
+	padding: 10px 13px;
+	width:100%;
+	height: 50px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	border: solid 1px #dcdcdc;
+	transition: box-shadow 0.3s, border 0.3s;
+	}
+select.registro_aspirantes:focus{
+	background: #fff;
+	box-shadow: 0 0 5px 1px #969696;
+	border: solid 1px #707070;
+	color: #3498db;
+	outline: none;
+	padding: 10px 13px;
+	}
+select.registro_aspirantes option{
+	color: black;
+	}
+
+/*input.registro_aspirantes[type='checkbox']{
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	margin: 0 5px; 
+	}*/
+
+#input_registro_aspirantes_cve,
+#input_registro_aspirantes_cve_ife,
+#input_registro_aspirantes_curp,
+#input_registro_aspirantes_cve_curp{
+	padding: 13px 50px 13px 13px;
+	background: #fbfbfb url('/img/cve18_medium_grid.svg') no-repeat 11.5px 21px;
+	font-family: monospace;
+	background-size: 13.3em auto;
+	font-weight: bold;
+	letter-spacing: 2.5px;
+	}
+
+#caja_registro_aspirantes_num_ext,
+#caja_registro_aspirantes_num_int{
+	max-width: 160px;
+}
+
+div[id^='error_input_registro_aspirantes']{
+	position: absolute;
+	top: 15px;
+	right: 4px;
+	width: 50px;
+	height: 50px;
+	padding: 13px;
+	display: inline-block;
+	}
+
+span[id^='mensaje_input_']{
+	font-size: 10px;
+	display: none;
+	}
+
+
+/* .squaredTwo */
+
+div[id^='caja_registro_aspirantes'] label.check_label {
+	position: relative;
+	display: block;
+	margin: 2px auto;
+	text-align: left;
+	font-size: 14px;
+	padding: 4px;
+	color: #404040;
+	}
+div[id^='caja_registro_aspirantes'] label.check_label:hover{
+	background-color: #eee;
+	color: #3498db;
+	}
+	div[id^='caja_registro_aspirantes'] div[id^='checkbox_group']{
+		padding-right: 54px;
+		}
+	div[id^='caja_registro_aspirantes'] label.check_label span.checkbox {
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		margin-right: 5px;
+		cursor: pointer;
+		position: relative;
+		background: linear-gradient(to bottom, #222 0%, #45484d 100%);
+		box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+		}
+	div[id^='caja_registro_aspirantes'] label.check_label span.checkbox:after {
+		content: '';
+		width: 9px;
+		height: 5px;
+		position: absolute;
+		top: 4px;
+		left: 4px;
+		border: 3px solid #fcfff4;
+		border-top: none;
+		border-right: none;
+		background: transparent;
+		opacity: 0;
+		transform: rotate(-45deg);
+		}
+
+	div[id^='caja_registro_aspirantes'] label.check_label input[type=checkbox] {
+		width: 0;
+		height: 0;
+		margin: 0;
+		}
+	div[id^='caja_registro_aspirantes'] label.check_label span{
+		vertical-align: middle;
+		}
+
+	div[id^='caja_registro_aspirantes'] label.check_label input[type=checkbox]:checked ~ span{
+		color: black;
+		font-weight: bold;
+		}
+	div[id^='caja_registro_aspirantes'] label.check_label input[type=checkbox]:focus ~ span{
+		color: #3498db;
+		}
+
+	div[id^='caja_registro_aspirantes'] label.check_label span.checkbox:hover::after,
+	div[id^='caja_registro_aspirantes'] label.check_label input[type=checkbox]:focus + span.checkbox:after {
+		opacity: 0.4;
+		}
+	div[id^='caja_registro_aspirantes'] label.check_label input[type=checkbox]:checked + span.checkbox:after {
+		opacity: 1;
+		}
+
+/* end .squaredTwo */
+
+/* .roundedTwo */
+
+div[id^='caja_registro_aspirantes'] label.radio_label {
+	position: relative;
+	display: block;
+	margin: 2px auto;
+	text-align: left;
+	font-size: 14px;
+	padding: 4px;
+	color: #404040;
+	}
+
+div[id^='caja_registro_aspirantes'] label.radio_label:hover{
+	background-color: #eee;
+	color: #3498db;
+	}
+	div[id^='caja_registro_aspirantes'] div[id^='radio_group']{
+		padding-right: 54px;
+		}
+	div[id^='caja_registro_aspirantes'] label.radio_label span.radio {
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		margin-right: 5px;
+		cursor: pointer;
+		position: relative;
+		background: linear-gradient(to bottom, #222 0%, #45484d 100%);
+		box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+		border-radius: 50%;
+		}
+	div[id^='caja_registro_aspirantes'] label.radio_label span.radio:after {
+		content: '';
+		width: 4px;
+		height: 4px;
+		position: absolute;
+		top: 4px;
+		left: 4px;
+		border: 6px solid #fcfff4;
+		/*border-top: none;
+		border-right: none;*/
+		background: #fcfff4;
+		opacity: 0;
+		border-radius: 50%;
+		}
+
+	div[id^='caja_registro_aspirantes'] label.radio_label input[type=radio] {
+		width: 0;
+		height: 0;
+		margin: 0;
+		}
+	div[id^='caja_registro_aspirantes'] label.radio_label span{
+		vertical-align: middle;
+		}
+
+	div[id^='caja_registro_aspirantes'] label.radio_label input[type=radio]:checked ~ span{
+		color: black;
+		font-weight: bold;
+		}
+	div[id^='caja_registro_aspirantes'] label.radio_label input[type=radio]:focus ~ span{
+		color: #3498db;
+		}
+
+	div[id^='caja_registro_aspirantes'] label.radio_label span.radio:hover::after,
+	div[id^='caja_registro_aspirantes'] label.radio_label input[type=radio]:focus + span.radio:after {
+		opacity: 0.4;
+		}
+	div[id^='caja_registro_aspirantes'] label.radio_label input[type=radio]:checked + span.radio:after {
+		opacity: 1;
+		}
+
+/*div[class^='select_pdf_icon']{*/
+div.button_60x80{
+    min-width: 60px;
+    /*height: 80px;*/
+    /* overflow: hidden; */
+    display: inline-block;
+    vertical-align: top;
+    margin: 16px;
+}
+div.button_60x80:enabled{
+    cursor:pointer;
+}
+a.button_enabled{
+    cursor:pointer;
+}
+
+div.button_60x80 .icon{
+
+    background-image: url(/img/Adobe_CreatePDF_icon.png);
+    width: 60px;
+    height: 60px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: center;
+    display: block;
+    vertical-align: top;
+    margin:auto;
+    }
+div.button_60x80 .title{
+    margin: 0;
+    text-align: center;
+    display: inline-block;
+    max-width: 120px;
+    vertical-align: top;
+}
+div.button_60x80 .status{
+
+    background-image: url(/img/estatus_not.png);
+    width: 23px;
+    height: 23px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: center;
+    display: block;
+    vertical-align: top
+    }
+div.button_60x80 .status.ok{
+    background-image: url(/img/estatus_ok.png)!important;
+
+}
+/* end .roundedTwo */

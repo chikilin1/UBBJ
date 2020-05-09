@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>UBBJ</title>
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="theme-color" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./resources/css/rDocentes.css">
+        <link rel="stylesheet" type="text/css" href="./resources/css/menu_estilo.css">
+        <link rel="stylesheet" type="text/css" href="./resources/css/estilos_login.css">
+        <link rel="stylesheet" type="text/css" href="./resources/css/estilos_registro_usuarios.css">
+        <link rel="stylesheet" type="text/css" href="./resources/css/estilos_registro_sedes.css">
+        <link rel="stylesheet" type="text/css" href="./resources/css/formularios_2018.css">
+        <link rel="stylesheet" type="text/css" href="./resources/css/responsivo.css">
+        <link rel="stylesheet" type="text/css" href="./resources/css/w3.css">
+        <link rel="stylesheet" type="text/css" href="./resources/css/all.css" >
+        <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">   
+        <script src="./resources/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+        <script src="./resources/js/main.js" type="text/javascript"></script>
+        <script src="./resources/js/validaciones.js" type="text/javascript"></script>
+        <script src="./resources/js/procesa.js" type="text/javascript"></script> 
+        <script src="./js/rutaApi.js"></script>  
+    </head>
+<body>
+    <div  class="w3-top" id="elemento">
+        <div  class="w3-bar w3-text-white" id="myNavbar">
+            <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleMenu()">
+                <i class="fa fa-bars"></i>
+            </a>
+            <a v-if="!status" class="w3-bar-item w3-button" href="/">Inicio</a>
+            <div v-if="!status" class="w3-dropdown-click  w3-hide-small">
+                <a class="w3-button" onclick="presentacion()">
+                    <i class="fas fa-file-download"></i> Documentos Básicos
+                </a>
+                <div v-if="!status" class="w3-dropdown-content w3-bar-block w3-card" id="presentacion">
+                    <ul>
+                        <li v-for="documentos of documentos" >
+                         <a class="w3-bar-item w3-button" :href="documentos.link" target="_blank" >{{documentos.nombre}}</a> 
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div v-if="!status" class="w3-dropdown-click  w3-hide-small">
+                <a class="w3-button" onclick="estudiantes()"><i class="fas fa-user-graduate"></i> Estudiantes y Docentes</a> 
+                <div class="w3-dropdown-content w3-bar-block w3-card" id="estudiantes">
+                    <ul>
+                        <li v-for="Estudios of ED" >
+                         <a class="w3-bar-item w3-button" :href="Estudios.link" target="_blank" >{{Estudios.nombre}}</a> 
+                       </li>
+                    </ul>
+                </div>
+            </div> 
+            <div v-if="!status" class="w3-dropdown-click  w3-hide-small">
+                <a class="w3-button" onclick="sedes()"><i class="fas fa-map-marker-alt"></i> Sedes  y Carreras</a> 
+                <div class="w3-dropdown-content w3-bar-block w3-card" id="sedes">
+                    <ul>
+                        <!--pruebas--> 
+                       <li> <!--w3-dropdown-hover-->
+                        <div class="w3-dropdown-hover  w3-hide-small">
+                            <a href="#" target="_blank" class="w3-bar-item w3-button">Sedes</a>
+                            <div class="w3-dropdown-content w3-bar-block w3-border" style="left:180px; top:0px;">
+                            <ul>
+                                <li v-for="sedesSub of sedesSub" >
+                                     <a :href="sedesSub.link" class="w3-bar-item w3-button">{{sedesSub.nombre}}</a>
+                                </li>
+                            </ul>
+                            </div>
+                        </div>
+                       </li>
+                       <!----->
+                       
+                        <li v-for="sedes_carreras of sedes_carreras" >
+                         <a class="w3-bar-item w3-button" :href="sedes_carreras.link" target="_blank" >{{sedes_carreras.nombre}}</a> 
+                       </li>
+                       <li> <!--w3-dropdown-hover-->
+                        <div class="w3-dropdown-hover  w3-hide-small">
+                            <!--<a href="#" target="_blank" class="w3-bar-item w3-button">Avance en la Instalación de Sedes</a>
+                            <div class="w3-dropdown-content w3-bar-block w3-border" style="left:260px; top:150px;">
+                            <ul>
+                                <li v-for="avance_sede_sub of avance_sede_sub" >
+                                     <a :href="avance_sede_sub.link" class="w3-bar-item w3-button">{{avance_sede_sub.nombre}}</a>
+                                </li>
+                            </ul>
+                            </div>-->
+                        </div>
+                       </li>
+                        
+                    </ul>        
+                </div>
+            </div> 
+            
+            
+            <div v-if="!status" class="w3-dropdown-click  w3-hide-small">
+                <a class="w3-button" onclick="convocatorias();"><i class="fas fa-calendar-alt"></i> Convocatorias y Eventos</a> 
+                <div class="w3-dropdown-content w3-bar-block w3-card" id="convocatorias">
+                    <ul>
+                        <li v-for="Convocatorias of Convocatorias_Eventos" >
+                         <a class="w3-bar-item w3-button" :href="Convocatorias.link" target="_blank" >{{Convocatorias.nombre}}</a> 
+                       </li>
+                    </ul> 
+                </div>
+            </div>
+
+            <div v-if="status" class="w3-dropdown-click  w3-hide-small"  style="visibility:visible; float: right;">
+                <a class="w3-button" onclick="convocatorias();"><i class="fas fa-user"> {{ user }}</i> </a> 
+                <div class="w3-dropdown-content w3-bar-block w3-card" id="convocatorias">
+                    <ul>
+                        <li onclick="cerraralv();">
+                         <a  class="w3-bar-item w3-button" >Cerrar sesíon</a> 
+                       </li>
+                    </ul> 
+                </div>
+            </div>
+
+            <div v-if="!status" style="visibility:visible; float: right;" class="w3-dropdown-click  w3-hide-small">
+                <a class="w3-button" href="/login"><i class="far fa-user"></i> Iniciar Sesión</a> 
+                <div class="w3-dropdown-content w3-bar-block w3-card" id="convocatorias">
+                </div>
+            </div>
+
+            <div style="visibility: hidden; float: right;" class="w3-dropdown-click  w3-hide-small">
+                <a class="w3-button" ><i class="far fa-bell"></i></a> 
+                <div class="w3-dropdown-content w3-bar-block w3-card" id="convocatorias">
+                </div>
+            </div>
+            
+
+
+        </div> 
+
+        <div class="w3-bar-block w3-white w3-card w3-hide w3-hide-large w3-hide-medium" id="navDemo">
+            <div v-if="!status" class="w3-dropdown-click">
+                <a  class="w3-button btn-open">
+                    <i class="fas fa-file-download"></i> Documentos Básicos
+                </a>
+                <div class="w3-dropdown-content w3-bar-block w3-card containerbg">
+                    <a class="w3-bar-item w3-button backitem"><i class="fas fa-chevron-circle-left"></i> Regresar</a>
+                    <ul>
+                        <li v-for="documentos of documentos" >
+                         <a class="w3-bar-item w3-button" :href="documentos.link" target="_blank" >{{documentos.nombre}}</a> 
+                       </li>
+                    </ul>
+                </div>
+            </div>
+        <div v-if="!status" class="w3-dropdown-click">
+            <a  class="w3-button btn-open">
+                <i class="fas fa-file-download"></i> Documentos Básicos
+            </a>
+            <div class="w3-dropdown-content w3-bar-block w3-card containerbg">
+                <a class="w3-bar-item w3-button backitem"><i class="fas fa-chevron-circle-left"></i> Regresar</a>
+                <ul>
+                    <li v-for="documentos of documentos" >
+                     <a class="w3-bar-item w3-button" :href="documentos.link" target="_blank" >{{documentos.nombre}}</a> 
+                   </li>
+                </ul>
+            </div>
+        </div>
+        <div v-if="!status" class="w3-dropdown-click">
+            <a class="w3-button btn-open">
+                <i class="fas fa-user-graduate"></i> Estudiantes y Docentes
+            </a>
+            <div class="w3-dropdown-content w3-bar-block w3-card containerbg">
+                <a class="w3-bar-item w3-button backitem"><i class="fas fa-chevron-circle-left"></i> Regresar</a>
+                <ul>
+                    <li v-for="Estudios of ED" >
+                     <a class="w3-bar-item w3-button" :href="Estudios.link" target="_blank" >{{Estudios.nombre}}</a> 
+                   </li>
+                </ul>
+            </div>
+        </div>
+        <div v-if="!status" class="w3-dropdown-click">
+            <a class="w3-button btn-open">
+                <i class="fas fa-map-marker-alt"></i> Sedes  y Carreras
+            </a>
+            <div class="w3-dropdown-content w3-bar-block w3-card containerbg">
+                <a class="w3-bar-item w3-button backitem"><i class="fas fa-chevron-circle-left"></i> Regresar</a>
+                <ul>
+                    <li v-for="sedes_carreras of sedes_carreras" >
+                     <a class="w3-bar-item w3-button" :href="sedes_carreras.link" target="_blank" >{{sedes_carreras.nombre}}</a> 
+                   </li>
+                </ul> 
+            </div>
+        </div>
+        <div v-if="!status" class="w3-dropdown-click">
+            <a class="w3-button btn-open">
+                <i class="fas fa-calendar-alt"></i> Convocatorias y Eventos
+            </a>
+            <div class="w3-dropdown-content w3-bar-block w3-card containerbg">
+                <a class="w3-bar-item w3-button backitem"><i class="fas fa-chevron-circle-left"></i> Regresar</a>
+                <ul>
+                    <li v-for="Convocatorias of Convocatorias_Eventos" >
+                     <a class="w3-bar-item w3-button" :href="Convocatorias.link" target="_blank" >{{Convocatorias.nombre}}</a> 
+                   </li>
+                </ul> 
+            </div>
+        </div>
+        <div v-if="!status" class="w3-dropdown-click">
+            <a class="w3-button" href="/login"><i class="far fa-user"></i> Iniciar Sesión</a>  
+        </div>
+        
+        
+        <div v-if="status" class="w3-dropdown-click">
+            <a class="w3-button btn-open">
+                <i class="fas fa-user">{{ user }}</i>
+            </a>
+            <div class="w3-dropdown-content w3-bar-block w3-card containerbg">
+                <a class="w3-bar-item w3-button backitem"><i class="fas fa-chevron-circle-left"></i> Regresar</a>
+                <ul>
+                    <li onclick="cerraralv();">
+                     <a  class="w3-bar-item w3-button" >Cerrar sesíon</a> 
+                   </li>
+                </ul> 
+            </div>
+        </div>
+     
+        <!---->
+      </div>
+    
+    </div>
+    <div class="w3-modal w3-light-grey w3-center w3-padding" id="modal01"><span class="w3-button w3-large w3-light-grey w3-display-topright" onclick='document.querySelector("#modal01").style.display="none"' title="Cancelar registro"><i class="fa fa-times"></i></span> <div class="principal_error" id="principal_error"></div> <div class=" w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64" id="principal_barra_apps" style="width:980px;max-width:100%;"></div> <span class="w3-button w3-large w3-dark-grey" onclick='document.querySelector("#modal01").style.display="none"' title="Cancelar registro"><i class="fa fa-times"></i> Cancelar registro</span></div>
+    <div class="bgimg-1 w3-display-container w3-opacity-min" id="inicio"><div class="w3-display-middle" style=""><span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity w3-mobile" style="display:inline-block">Universidades para el Bienestar <br> <em>Benito Juárez García</em></span></div></div>    
+    </div>
+
+    
+    
+<!--route vies-->  
+<div id="app">  
+    <router-view></router-view>
+</div>
+<!--fin route vies-->  
+
+ <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+            <a class="w3-button w3-light-grey" href="#inicio"><i class="fa fa-arrow-up w3-margin-right"></i> Subir</a>
+            <p class="w3-padding">Universidades para el Bienestar
+                <br> Benito Juárez García</p>
+            <div class="w3-bar w3-text-white" id="footNavbar">
+                <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleMenu()">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <a class="w3-bar-item w3-button w3-hide-small" href="/transparencia" target="_blank">
+                    <i class="fas fa-glasses"></i> Transparencia
+                </a>
+                <a class="w3-bar-item w3-button w3-hide-small" href="#">
+                    <i class="fa fa-envelope"></i> Contacto
+                </a>
+            </div>
+        </footer>
+
+</body>
+</html>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/vue.js"></script>
+<script src="/js/vue-router.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/sedes.js"></script>
+<script src="/js/carreras.js"></script>
+<script src="/js/transparencia.js"></script>
+<script src="/js/login.js"></script>
+<script src="/js/registro_Docente.js"></script>
+<script src="/js/registro_usuarios.js"></script>
+<script src="/js/registro_Sedes.js"></script>
+<script src="/js/areasDeConocimiento.js"></script>
+<script src="/js/menu.js"></script>
+<script src="/js/convocatoria.js"></script>
+<script src="/js/Aspirantes.js"></script>
+
+<script src="/js/main.js"></script>
+<script src="/js/sweetAlert2.9.js"></script>
+<script src="/js/validacionLogin.js"></script>
+
+
+
+
+
+
+

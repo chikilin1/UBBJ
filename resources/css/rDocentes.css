@@ -1,0 +1,78 @@
+.accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 91%;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
+        border-bottom: 0.5px #000;
+      }
+
+      
+
+.active, .accordion:hover {
+        background-color: #ccc; 
+      }
+
+      
+.panel {
+        width: 91%;
+        display: none;
+        background-color: white;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: 0px 20px 0px 20px;
+      }
+
+.iconplusDerecha{
+      width: 20px; 
+      height: auto;
+      float: right;
+      }
+
+.alertaBoton{
+width: 20px; 
+height: auto;
+}
+
+.ordenamientoHorizontal{
+  width: 91%;
+  text-align: right;
+}
+
+.boton2020{
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: rgba(91, 131, 243, 0.5);
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.contenerdoFormularios{
+  width: 100%;
+  float: left; 
+}
+
+.campoIndividual{
+  width: 33.33%;
+  box-sizing: border-box;
+  padding: 10px;
+  float: left;
+}
+
+.nombreInput{
+  font-size: 12px;
+}
+
+.selec{
+  padding: 11px;
+  border-bottom-color:rgb(12, 32, 212);
+  border-right: none;
+  border-left: none;
+  border-top: none;
+}
+
+
