@@ -23,9 +23,13 @@ const Login = {
               medidas_sureste:'',
               medida_suroeste:'',
               medida_noroeste:'',
-              usoPrevio_terreno:''
+              usoPrevio_terreno:'',
+              folio:''
           }  
       }, mounted() {
+        if (localStorage.folio) {
+          this.folio = localStorage.folio;
+        }
         if (localStorage.representacion) {
           this.representacion = localStorage.representacion;
         }
@@ -159,6 +163,8 @@ const Login = {
                       const medidas_noreste = response.data.medidas_noreste;
                       const medidas_sureste = response.data.medidas_sureste;
 
+                      const folio = response.data.folio;
+
                       localStorage.setItem('user-token', token1); // store the token in localstorage
                       console.log(localStorage);
                       console.log(mensaje);
@@ -210,6 +216,8 @@ const Login = {
                         localStorage.medidas_sureste = medidas_sureste;
                         
                         localStorage.usoPrevio_terreno = usoPrevio_terreno;
+                        localStorage.folio = folio;
+                        
                         setTimeout(function () {
                           location.href="/registro_Sedes";
                          }, 2000); 
