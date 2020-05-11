@@ -1,0 +1,8 @@
+ubbjenv/
+ubbjvenv/
+app.db
+venv/
+.vscode/
+almacenTepito/
+__pycache__/
+flaskApp.wsgi
