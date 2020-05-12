@@ -33,6 +33,37 @@ input[type="number"]{
 .button:hover{
     background:  #5D9B9B
 }
+
+
+.bguardar{
+    border: none;
+    color: white;
+    background: gray;
+    cursor: pointer;
+    padding: 10px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+
+.bguardar:hover{
+    background:  #5D9B9B
+}
+
+.busqueda{
+    border: none;
+    color: white;
+    background: gray;
+    cursor: pointer;
+    padding: 10px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+.busqueda:hover{
+    background:  #5D9B9B
+}
+
 .button2{
     border: none;
     width: 100px;

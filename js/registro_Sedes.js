@@ -51,6 +51,14 @@ function autodestruccion(boton){
   $("#"+boton).hide(500);
 }
 
+//domicilio
+if(localStorage.domicilio == "null"){
+localStorage.domicilio = "";
+}
+if(localStorage.colonia == "null"){
+  localStorage.colonia = "";
+}
+
 //Obtener checkbox
 var checkboxAcces="";
 var checkboxT="";
@@ -93,13 +101,12 @@ function desbloqueoCel() {
 function desbloqueoCorreo() {
   document.getElementById("correo").disabled = false;
 }
-
+/* 
 const codigosPostales = [
   { "CP": "77100", "Estado": "Tamaulipas" },
   { "CP": "55100", "Estado": "Estado de México" },
   { "CP": "66100", "Estado": "Guerrero" }
 ]
-
 
 const estados = [
   { "Estado": "Guerrero", "Municipio": "Acapulco de Juárez" },
@@ -249,7 +256,7 @@ function obtenerLocalidad() {
 }
 
 // -->> FIN obtener localidad manualmente
-
+*/
 
 
 function ocultarPicture(previsualizador) {
@@ -366,9 +373,9 @@ function guardarPrimerFormulario() {
 //Carga de archivos para 2do formulario de Sedes    
 function segundoFormulario() {
   const codigoPostal = document.getElementById('codigoPostal').value;
-  const estado = document.getElementById('estado').value;
-  const municipio = document.getElementById('municipio').value;
-  const localidad = 1;
+  const estado = document.getElementById('edo').value;
+  const municipio = document.getElementById('mun').value;
+  const localidad = document.getElementById('loc').value;
   const domicilio = document.getElementById('domicilio').value;
   const superficieTerreno = document.getElementById('superficieTerreno').value;
   const latitud = document.getElementById('latitud').value;
@@ -625,17 +632,36 @@ const Registro_sedes = {
       medidas_sureste: localStorage.medidas_sureste,
       medida_noroeste: localStorage.medida_noroeste,
       medida_suroeste: localStorage.medida_suroeste,
+
+      arrayeEstados:[],
+      arrayMunicipio:[],
+      arrayLocalidad:[],
+
+      valorx:''
+      
     }
   },
   methods: {
-
+    onchange:function(){
+      console.log(this.valorx);
+},
 //AXIOS
 sendUserPrueba: function () {
-  axios.post('http://207.249.28.99/app/cp', {
-      cp: '55100'
+  var lapusdelaherida = $("#codigoPostal").val();
+  $("#edo").html('');
+  $("#mun").html('');
+  $("#loc").html('');
+
+  axios.post(api+'api/cp', {
+      cp: lapusdelaherida,
   }).then(response => {
-      console.log(response.data);
-       
+    console.log(response.data);
+    const cantidad =  response.data.Localidades.length ;
+    this.arrayeEstados.push(response.data.Localidades[0].estado);
+    this.arrayMunicipio.push(response.data.Localidades[0].municipio);
+      for (var i = 0; i < cantidad; i++) {
+      this.arrayLocalidad.push({id:response.data.Localidades[i].id_localidad, localidad:response.data.Localidades[i].localidad});
+     }
   }).catch(e => {
       console.log(e);
   });
@@ -732,18 +758,19 @@ sendUserPrueba: function () {
     `
 <div class="w3-container w3-section">
     <center><h1 text-align="center">Registro de solicitudes para nuevas sedes</h1></center>
+    
       <div class="w3-row">
-        <a href="#" onclick="openCity(event, 'Paso 1');">
+        <a href="javascript:void(0)" onclick="openCity(event, 'Paso 1');">
           <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding"> 
           <img src="./resources/img/01.png" style="width:30px; heigth:auto;"> 
           Datos de contacto 
           <img id="paloma1" style="display:none;width:25px; height:auto;" src="./resources/img/valida.png"></div>
           
         </a>
-        <a href="#" onclick="openCity(event, 'Paso 2');">
+        <a href="javascript:void(0)" onclick="openCity(event, 'Paso 2');">
           <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding"><img src="./resources/img/02.png" style="width:30px; heigth:auto;"> Datos del terreno de donación <img id="paloma2" style="display:none;width:25px; heigth:auto;" src="./resources/img/valida.png"></div>
         </a>
-        <a href="#" onclick="openCity(event, 'Paso 3');">
+        <a href="javascript:void(0)" onclick="openCity(event, 'Paso 3');">
           <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding"><img src="./resources/img/03.png" style="width:30px; heigth:auto;"> Documentos del terreno <img id="paloma3"  style="display:none;width:25px; heigth:auto;" src="./resources/img/valida.png"></div>
         </a>
       </div>
@@ -756,7 +783,7 @@ sendUserPrueba: function () {
       <span class="tooltiptext2">Los datos solicitados se refieren a la persona que está representando el registro de la solicitud de sede para el programa Universidades del Bienestar Benito Juárez.</span>
       </div>
       </h3> 
-
+      
       <br>
       <form> 
         <label class="titulos">CURP </label>
@@ -784,7 +811,7 @@ sendUserPrueba: function () {
         
         </select>
         <br><br>
-
+        
 
         <div style="width:100%; text-align:center; display:inline-block;">
              <a style="display:none;" class="bguardar" id="g1"  onClick="guardarPrimerFormulario(); autodestruccion('g1');"> Guardar </a>
@@ -800,22 +827,46 @@ sendUserPrueba: function () {
        <span class="tooltiptext2">Los datos solicitados se refieren a las características principales del terreno o predio que se está donando, es necesario ingresarlos de manera correcta para su futura validación, de lo contrario, el registro no se tomará en cuenta.</span>
      </div>
       </h3>
-      
+   
          <form enctype="multiport/form-data" id="terrenoDonacion"> 
              <label class="titulos">Ingrese código postal</label>
              <br> 
-             <input autocomplete="off" type="text" class="form-control" id="codigoPostal" maxlength="5" onKeyUp="obtenerCP();" onKeyPress="return soloNumeros(event);">      
-             <!--<a class="button" @click="sendUserPrueba"> prueba </a> -->
+             <input autocomplete="off" type="text" class="form-control" id="codigoPostal" maxlength="5" onKeyPress="return soloNumeros(event);" placeholder="01234">      
+             <a class="busqueda" @click="sendUserPrueba"> Buscar código postal </a> 
              <br><br> 
              <label for='estado'>Estado: </label>
+             <!-- 
              <select class="form-control" id="estado" onChange="obtenerMunicipio();" required>
-             </select>
-             <label for='municipio'>Municipio: </label>
-             <select class="form-control" id="municipio" onChange="obtenerLocalidad();" required>
-             </select>
+             </select>-->
+<!---->             
+             <select id="edo">
+                <option v-for="item in arrayeEstados">
+                {{item}}
+              </option>
+            </select>
+           
+<!---->    
+            <label for='municipio'>Municipio: </label>
+<!--   <select class="form-control" id="municipio" onChange="obtenerLocalidad();" required>
+             </select>-->
+
+             <select id="mun">
+             <option v-for="item in arrayMunicipio" >
+             {{item}}
+           </option>
+         </select>
+
              <label for='localidad'>Localidad: </label>
-             <select class="form-comtrol" id="localidad" required>
-             </select> 
+            <!-- <select class="form-comtrol" id="localidad" required>
+             </select> -->
+
+             <select id="loc" v-model="valorx" v-on:change="onchange">
+             <option >Seleccione</option>
+             <option v-for="(item, key) in arrayLocalidad" :value="item.id">
+             {{item.localidad}}
+               </option>
+           </select>
+
              <input type="text" class="form-control" id="domicilio" placeholder="Colonia, Calle, No." required v-model="colonia"> 
              <br><br>
              <label class="titulos">Superficie del terreno</label>
